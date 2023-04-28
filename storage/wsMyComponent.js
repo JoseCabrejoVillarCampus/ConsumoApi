@@ -1,19 +1,19 @@
 import api from "../API/api.js";
 
 let ws={
-    async showAll(articles){
-        const data = await api.getAll(articles);
-        console.log(data.articles);
-        let html='';
+    async showAll(name){
+        const data = await api.getAll(name);
+        console.log(data);
+        let plantilla='';
         data.articles.forEach(element => {
             const{author, title, description}=element;
-            html +=`
+            plantilla +=`
             <div class="title">${title}</div>
             <div class="author">${author}</div>
             <div class="description">${description}</div>
             `
         });
-        return [html]
+        return plantilla;
     }
 }
 self.addEventListener("message", (e)=>{
